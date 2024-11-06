@@ -24,6 +24,9 @@ class ClockFace {
   /// The image representing the seconds hand.
   final Image? secondsHand;
 
+  /// The clock background
+  final Image? background;
+
   /// Constructs a [ClockFace] with the given components.
   /// All images must have the same size and be centered.
   const ClockFace({
@@ -33,12 +36,14 @@ class ClockFace {
     required this.minuteHand,
     this.nightIndicator,
     this.secondsHand,
+    this.background,
   });
 
   /// Constructs a [ClockFace] with default Termina clock assets.
   ClockFace.termina()
-      : center = Image.asset("assets/termina_clock/center.png", package: "termina_clock"),
-        secondsHand = null,
+      : secondsHand = null,
+        background = null,
+        center = Image.asset("assets/termina_clock/center.png", package: "termina_clock"),
         dayIndicator = Image.asset("assets/termina_clock/day_indicator.png", package: "termina_clock"),
         hourHand = Image.asset("assets/termina_clock/hours_disc.png", package: "termina_clock"),
         minuteHand = Image.asset("assets/termina_clock/minutes_disc.png", package: "termina_clock"),
@@ -104,6 +109,7 @@ class TerminaClockState extends State<TerminaClock> {
     return Stack(
       alignment: Alignment.center,
       children: [
+        _faces.background,
         RotationTransition(
           turns: AlwaysStoppedAnimation(minuteRotation),
           child: _faces.minuteHand, // Minute Hand
