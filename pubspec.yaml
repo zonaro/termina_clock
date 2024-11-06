@@ -1,0 +1,33 @@
+name: termina_clock
+description: "A new Flutter package project."
+version: 0.0.1
+homepage: 
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # To add assets to your package, add an assets section, like this:
+  assets:
+    - assets/termina_clock/center.png
+    - assets/termina_clock/day_indicator.png
+    - assets/termina_clock/night_indicator.png
+    - assets/termina_clock/minutes_disc.png
+    - assets/termina_clock/hours_disc.png
+    
+  
