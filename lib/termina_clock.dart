@@ -4,16 +4,38 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+/// Represents the face of the clock with various components.
 class ClockFace {
+  /// The center image of the clock face.
   final Image? center;
+
+  /// The image indicating day time.
   final Image? dayIndicator;
+
+  /// The image representing the hour hand.
   final Image hourHand;
+
+  /// The image representing the minute hand.
   final Image minuteHand;
+
+  /// The image indicating night time.
   final Image? nightIndicator;
+
+  /// The image representing the seconds hand.
   final Image? secondsHand;
 
-  const ClockFace({this.center, this.dayIndicator, required this.hourHand, required this.minuteHand, this.nightIndicator, this.secondsHand});
+  /// Constructs a [ClockFace] with the given components.
+  /// All images must have the same size and be centered.
+  const ClockFace({
+    this.center,
+    this.dayIndicator,
+    required this.hourHand,
+    required this.minuteHand,
+    this.nightIndicator,
+    this.secondsHand,
+  });
 
+  /// Constructs a [ClockFace] with default Termina clock assets.
   ClockFace.termina()
       : center = Image.asset("assets/termina_clock/center.png", package: "termina_clock"),
         secondsHand = null,
@@ -23,31 +45,49 @@ class ClockFace {
         nightIndicator = Image.asset("assets/termina_clock/night_indicator.png", package: "termina_clock");
 }
 
+/// A widget that displays a Termina clock.
 class TerminaClock extends StatefulWidget {
+  /// The initial date and time to display on the clock.
   final DateTime? dateTime;
+
+  /// Whether the clock is static (does not update).
   final bool staticClock;
+
+  /// The face of the clock.
   final ClockFace? face;
 
+  /// Constructs a [TerminaClock] with optional dateTime and staticClock.
   const TerminaClock({super.key, this.dateTime, this.staticClock = false}) : face = null;
+
+  /// Constructs a custom [TerminaClock] with a specified face.
   const TerminaClock.custom({super.key, this.dateTime, this.staticClock = false, required this.face});
 
   @override
   createState() => TerminaClockState();
 }
 
+/// The state for the [TerminaClock] widget.
 class TerminaClockState extends State<TerminaClock> {
+  /// The face of the clock.
   late ClockFace _faces;
 
+  /// The timer that updates the clock.
   Timer? _timer;
+
+  /// The current date and time displayed on the clock.
   late DateTime _currentTime;
 
+  /// Gets the current date and time.
   DateTime get dateTime => _currentTime;
+
+  /// Sets the current date and time.
   set dateTime(DateTime dateTime) {
     setState(() {
       _currentTime = dateTime;
     });
   }
 
+  /// Gets the appropriate day or night indicator based on the current time.
   Image? get _indicator {
     if (_faces.dayIndicator != null || _faces.nightIndicator != null) {
       return _currentTime.isAfter(DateTime(_currentTime.year, _currentTime.month, _currentTime.day, 5, 59, 59)) && _currentTime.isBefore(DateTime(_currentTime.year, _currentTime.month, _currentTime.day, 18)) ? _faces.dayIndicator : _faces.nightIndicator;
