@@ -16,7 +16,7 @@ and the Flutter guide for
 
 # Termina Clock
 
-Termina Clock is a Flutter package that provides a customizable clock widget inspired by the Termina clock from The LEgend of Zelda - Majora's Mask. It allows you to display a clock with custom images for the hour, minute, and second hands, as well as day and night indicators.
+Termina Clock is a Flutter package that provides a customizable clock widget inspired by the Termina clock from The Legend of Zelda - Majora's Mask. It allows you to display a clock with custom images for the hour, minute, and second hands, as well as day and night indicators.
 
 ## Features
 
