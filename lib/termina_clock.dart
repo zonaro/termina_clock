@@ -42,38 +42,25 @@ class TerminaClockState extends State<TerminaClock> {
     double size = widget.size ?? MediaQuery.sizeOf(context).width;
 
     return SizedBox(
-      width: widget.size,
+      width: size,
       child: Stack(
         alignment: Alignment.center,
         children: [
           RotationTransition(
             turns: AlwaysStoppedAnimation(minuteRotation),
-            child: SizedBox(width: widget.size, child: Image.asset(_minuteHand, package: "termina_clock")), // Minute Hand
+            child: Image.asset(_minuteHand, package: "termina_clock"), // Minute Hand
           ),
           RotationTransition(
             turns: AlwaysStoppedAnimation(hourRotation),
             child: Stack(
               alignment: Alignment.center,
               children: [
-                SizedBox(width: size * .75, child: Image.asset(_hourHand, package: "termina_clock")),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    SizedBox(
-                      height: size * .48,
-                    ),
-                    SizedBox(
-                      width: size * .25,
-                      child: Image.asset(_indicator, package: "termina_clock"),
-                    ),
-                  ],
-                ),
+                Image.asset(_hourHand, package: "termina_clock"),
+                Image.asset(_indicator, package: "termina_clock"),
               ],
             ), // Hour Hand
           ),
-          SizedBox(width: size * .15, child: Center(child: Image.asset(_center, package: "termina_clock"))), // Center
+          Center(child: Image.asset(_center, package: "termina_clock")), // Center
         ],
       ),
     );
