@@ -1,7 +1,7 @@
 name: termina_clock
 description: "A new Flutter package project."
 version: 0.0.1
-homepage: 
+homepage: http://github.com/zonaro/termina_clock
 
 environment:
   sdk: ^3.5.3
