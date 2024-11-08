@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// Represents the face of the clock with various components.
+/// ATTENTION: All images must have the same size and be centered.
 class ClockFace {
   /// The center image of the clock face.
   final Image? center;
@@ -109,7 +110,7 @@ class TerminaClockState extends State<TerminaClock> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        _faces.background,
+        if (_faces.background != null) _faces.background!, // Background
         RotationTransition(
           turns: AlwaysStoppedAnimation(minuteRotation),
           child: _faces.minuteHand, // Minute Hand
